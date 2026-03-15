@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veille | Brahim Hammou</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    html{font-size:90%}
+    body{font-family:'Noto Sans',sans-serif;background:#f8fafc;color:#1e293b;overflow-x:hidden}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#f1f5f9}
+    ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}::-webkit-scrollbar-thumb:hover{background:#6366F1}
+    .bh-nav{background:rgba(30,30,46,.96);backdrop-filter:blur(18px);border-bottom:1px solid #252538;position:sticky;top:0;z-index:100;height:80px}
+    .bh-logo{font-weight:900;font-size:1.5rem;color:#fff;text-decoration:none}.bh-logo span{color:#6366F1}
+    .nav-pill-wrap{background:rgba(37,37,56,.8);border-radius:1.2rem;padding:6px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+    .nav-pill-wrap::-webkit-scrollbar{display:none}
+    .nav-pill{background:transparent;border:none;color:#94a3b8;font-weight:900;font-size:.85rem;padding:10px 16px;border-radius:.75rem;white-space:nowrap;transition:all .2s;cursor:pointer;text-decoration:none;display:inline-block}
+    .nav-pill:hover{color:#fff;background:rgba(100,116,139,.3)}
+    .nav-pill.active{background:linear-gradient(to right,#6366F1,#9333ea);color:#fff;transform:scale(1.05)}
+    .btn-cv{background:linear-gradient(to right,#6366F1,#9333ea);color:#fff;font-weight:700;font-size:.85rem;padding:10px 20px;border-radius:.75rem;text-decoration:none;white-space:nowrap;transition:all .2s;box-shadow:0 4px 14px rgba(99,102,241,.3)}
+    .btn-cv:hover{background:linear-gradient(to right,#818cf8,#a855f7);color:#fff}
+    .bh-footer{background:#1e1e2e;border-top:1px solid #252538;color:#fff}
+    .bh-footer a{color:#94a3b8;text-decoration:none;font-weight:500;font-size:.85rem;display:flex;align-items:center;gap:8px}
+    .bh-footer a:hover{color:#818cf8}.sep{color:#374151}
+    /* Intro */
+    .intro-box{background:linear-gradient(to right,#eef2ff,#faf5ff);border:1px solid #c7d2fe;border-radius:2rem;padding:2rem 2.25rem}
+    .intro-pill{border-radius:.75rem;padding:.875rem 1rem;border:1px solid;font-size:.85rem}
+    .intro-pill h4{font-weight:900;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+    /* Method cards */
+    .method-card{background:#fff;border:1px solid #e2e8f0;border-radius:1.25rem;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:box-shadow .2s}
+    .method-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.09)}
+    .method-icon{width:42px;height:42px;border-radius:.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    /* Article cards */
+    .article-card{background:#fff;border:1px solid #e2e8f0;border-radius:1.25rem;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.04);text-decoration:none;color:inherit;display:block;transition:all .2s}
+    .article-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.1);border-color:#c7d2fe;color:inherit}
+    .article-card:hover .article-title{color:#4F46E5}
+    .cat-badge{font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid;display:inline-block}
+    .date-badge{font-size:.7rem;font-weight:600;background:#f1f5f9;border:1px solid #e2e8f0;color:#475569;padding:4px 10px;border-radius:999px;display:inline-block}
+    .article-title{font-weight:700;font-size:1rem;margin-bottom:.35rem;transition:color .2s}
+    .source-line{font-size:.75rem;color:#94a3b8;border-top:1px solid #f1f5f9;padding-top:.6rem;margin-top:.6rem}
+  
+    .bh-inner{max-width:1600px;margin:0 auto;padding-left:1rem;padding-right:1rem}
+    @media(min-width:768px){.bh-inner{padding-left:2rem;padding-right:2rem}}
+    @media(min-width:992px){.bh-inner{padding-left:3.5rem;padding-right:3.5rem}}
+    @media(min-width:1400px){.bh-inner{padding-left:4.5rem;padding-right:4.5rem}}
+  </style>
+</head>
+<body>
+
+<nav class="bh-nav">
+  <div class="bh-inner d-flex align-items-center justify-content-between h-100">
+    <a href="index.html" class="bh-logo">BH<span>.</span></a>
+    <div class="nav-pill-wrap">
+      <a href="index.html"   class="nav-pill">accueil</a>
+      <a href="stages.html"  class="nav-pill">stages</a>
+      <a href="projets.html" class="nav-pill">projets &amp; certifs</a>
+      <a href="veille.html"  class="nav-pill active">veille</a>
+    </div>
+    <a href="CV.pdf" download class="btn-cv d-none d-lg-flex align-items-center gap-2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      Télécharger CV
+    </a>
+  </div>
+</nav>
+
+<main class="bh-inner py-5">
+
+  <!-- Header -->
+  <div class="d-flex align-items-center gap-3 border-bottom pb-4 mb-4">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+    <h2 class="fw-black fs-2 mb-0">Veille Technologique</h2>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro-box mb-5">
+    <h3 class="fw-bold mb-3" style="color:#312e81;font-size:1.3rem">Thème : Le Web Scraping &amp; l'Extraction de Données</h3>
+    <p style="color:#3730a3;line-height:1.8" class="mb-3">
+      Le <strong>web scraping</strong> désigne l'ensemble des techniques permettant d'extraire automatiquement des données depuis des sites web ou des APIs, à l'aide de scripts et de programmes informatiques. Concrètement, un script parcourt des pages, analyse leur structure HTML et en extrait les informations utiles — prix, articles, statistiques — pour les stocker ou les analyser.
+    </p>
+    <p style="color:#3730a3;line-height:1.8" class="mb-4">
+      Ce domaine se situe à la croisée de plusieurs disciplines que j'explore durant ma formation : le <strong>développement logiciel</strong> (conception de scripts Python robustes), la <strong>data analyse</strong> (nettoyage et visualisation des données extraites avec Pandas et Matplotlib) et la <strong>cybersécurité</strong> (compréhension des protections anti-bots, des WAF et du cadre légal RGPD/Data Act).
+    </p>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="intro-pill" style="background:#eef2ff;border-color:#c7d2fe;color:#3730a3">
+          <h4 style="color:#4338ca">Développement</h4>
+          <p class="mb-0" style="font-size:.82rem;line-height:1.6">Scripts Python, Playwright, Scrapy, BeautifulSoup — automatiser la collecte de données à grande échelle.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="intro-pill" style="background:#faf5ff;border-color:#e9d5ff;color:#581c87">
+          <h4 style="color:#7e22ce">Data Analyse</h4>
+          <p class="mb-0" style="font-size:.82rem;line-height:1.6">Nettoyage et transformation des données brutes avec Pandas, visualisation avec Matplotlib et Seaborn.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="intro-pill" style="background:#f8fafc;border-color:#e2e8f0;color:#1e293b">
+          <h4 style="color:#334155">Cybersécurité &amp; Droit</h4>
+          <p class="mb-0" style="font-size:.82rem;line-height:1.6">Contournement de WAF, fingerprinting, conformité RGPD, Data Act européen et jurisprudence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-5">
+
+    <!-- Méthodologie -->
+    <div class="col-xl-3">
+      <h3 class="fw-bold fs-5 mb-4 d-flex align-items-center gap-2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        Ma Méthodologie
+      </h3>
+      <div class="d-flex flex-column gap-3">
+
+        <div class="method-card d-flex gap-3 align-items-start">
+          <div class="method-icon" style="background:#faf5ff;color:#9333ea">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+          </div>
+          <div>
+            <h5 class="fw-bold mb-1" style="font-size:.9rem">Feedly (Flux RSS)</h5>
+            <p class="text-secondary mb-0" style="font-size:.82rem;line-height:1.6">Centralisation quotidienne d'articles issus de blogs spécialisés (Towards Data Science, Hacker News).</p>
+          </div>
+        </div>
+
+        <div class="method-card d-flex gap-3 align-items-start">
+          <div class="method-icon" style="background:#eef2ff;color:#4F46E5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          </div>
+          <div>
+            <h5 class="fw-bold mb-1" style="font-size:.9rem">Google Alerts</h5>
+            <p class="text-secondary mb-0" style="font-size:.82rem;line-height:1.6">Alertes configurées sur des mots-clés de niche ("Playwright stealth", "Data Act Scraping").</p>
+          </div>
+        </div>
+
+        <div class="method-card d-flex gap-3 align-items-start">
+          <div class="method-icon" style="background:#fff7ed;color:#ea580c">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M3 9h6"/><path d="M3 15h6"/></svg>
+          </div>
+          <div>
+            <h5 class="fw-bold mb-1" style="font-size:.9rem">Padlet</h5>
+            <p class="text-secondary mb-0" style="font-size:.82rem;line-height:1.6">Tableau de veille collaboratif pour organiser et annoter les articles classés par thématique.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Articles -->
+    <div class="col-xl-9">
+      <h3 class="fw-bold fs-5 mb-4 d-flex align-items-center gap-2">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        Fil d'Actualité
+      </h3>
+      <div class="d-flex flex-column gap-3">
+
+        <a href="https://www.cnil.fr/fr/reglement-donnees-data-act-nouveau-cadre-europeen-pour-partage-utilisation-donnees" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Février 2026</span>
+            <span class="cat-badge" style="color:#6b21a8;background:#faf5ff;border-color:#e9d5ff">Juridique</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">L'impact du Data Act européen sur le scraping d'API</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Nouvelles directives encadrant l'extraction de données. Le RGPD durcit les sanctions pour les entreprises utilisant des données personnelles via des scrapers automatisés.</p>
+          <div class="source-line">Source : <strong class="text-dark">CNIL</strong></div>
+        </a>
+
+        <a href="https://silentflow.dev/fr/blog/navigateurs-headless-scraping-2026/" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Janvier 2026</span>
+            <span class="cat-badge" style="color:#3730a3;background:#eef2ff;border-color:#c7d2fe">Technique</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">Navigateurs headless en 2026 : Playwright, Puppeteer et la réalité du scraping dynamique</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Analyse technique des navigateurs headless modernes et des plugins 'Stealth' de Playwright permettant d'esquiver les protections anti-bots comme Cloudflare Turnstile et Datadome.</p>
+          <div class="source-line">Source : <strong class="text-dark">Silentflow.dev</strong></div>
+        </a>
+
+        <a href="https://isarta.com/infos/leur-modele-daffaires-est-base-sur-le-pillage-systematique-de-contenus-proteges-pourquoi-la-presse-poursuit-openai-chatgpt/" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Décembre 2025</span>
+            <span class="cat-badge" style="color:#374151;background:#f8fafc;border-color:#d1d5db">IA &amp; Éthique</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">OpenAI face aux éditeurs : La guerre du robots.txt</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Face à l'entraînement massif des LLMs, de grands médias poursuivent OpenAI en justice. Contourner le fichier robots.txt est-il devenu illégal ?</p>
+          <div class="source-line">Source : <strong class="text-dark">Isarta Infos</strong></div>
+        </a>
+
+        <a href="https://www.databricks.com/blog/polars-vs-pandas" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Novembre 2025</span>
+            <span class="cat-badge" style="color:#3730a3;background:#eef2ff;border-color:#c7d2fe">Data Science</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">Extraction massive : Optimiser Pandas avec Polars</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Une fois les données scrapées, la vitesse est cruciale. 'Polars', l'alternative ultra-rapide à Pandas pour nettoyer d'énormes fichiers.</p>
+          <div class="source-line">Source : <strong class="text-dark">Databricks Blog</strong></div>
+        </a>
+
+        <a href="https://realpython.com/beautiful-soup-web-scraper-python/" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Octobre 2025</span>
+            <span class="cat-badge" style="color:#3730a3;background:#eef2ff;border-color:#c7d2fe">Technique</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">BeautifulSoup 4 vs Scrapy : lequel choisir en 2025 ?</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Comparatif approfondi des deux librairies phares du scraping Python. Scrapy s'impose pour les projets d'envergure tandis que BeautifulSoup reste roi pour les scripts ponctuels.</p>
+          <div class="source-line">Source : <strong class="text-dark">Real Python</strong></div>
+        </a>
+
+        <a href="https://www.browserstack.com/guide/playwright-vs-selenium" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Septembre 2025</span>
+            <span class="cat-badge" style="color:#3730a3;background:#eef2ff;border-color:#c7d2fe">Technique</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">Selenium vs Playwright : performances et détection en 2025</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Benchmark complet entre Selenium et Playwright sur la vitesse d'exécution, la gestion des pages dynamiques et la résistance aux systèmes de détection de bots.</p>
+          <div class="source-line">Source : <strong class="text-dark">BrowserStack</strong></div>
+        </a>
+
+        <a href="https://www.village-justice.com/articles/scraping-donnees-publiques-cadre-juridique,41234.html" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Août 2025</span>
+            <span class="cat-badge" style="color:#6b21a8;background:#faf5ff;border-color:#e9d5ff">Juridique</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">Le scraping de données publiques est-il légal en France ?</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Tour d'horizon de la jurisprudence française sur le scraping de sites publics. La récente décision du Conseil d'État clarifie les limites du droit à la réutilisation des données.</p>
+          <div class="source-line">Source : <strong class="text-dark">Village de la Justice</strong></div>
+        </a>
+
+        <a href="https://intelligence-artificielle.developpez.com/actu/370374/Cloudflare-retourne-l-IA-contre-elle-meme-en-deployant-un-labyrinthe-sans-fin-de-faits-non-pertinents-pour-lutter-contre-le-scraping-non-autorise-de-donnees-d-entrainement-d-IA-comme-ChatGPT/" target="_blank" rel="noopener noreferrer" class="article-card">
+          <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+            <span class="date-badge">Juin 2025</span>
+            <span class="cat-badge" style="color:#374151;background:#f8fafc;border-color:#d1d5db">Cybersécurité</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ms-auto"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <p class="article-title">Détection de bots : comment les entreprises protègent leurs données</p>
+          <p class="text-secondary mb-0" style="font-size:.84rem;line-height:1.65">Cloudflare retourne l'IA contre elle-même en déployant un labyrinthe de faits non pertinents pour lutter contre le scraping non autorisé de données d'entraînement IA.</p>
+          <div class="source-line">Source : <strong class="text-dark">Développez.com</strong></div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bh-footer mt-5">
+  <div class="bh-inner py-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4">
+    <p class="mb-0 fw-bold text-uppercase small" style="color:#94a3b8;letter-spacing:.1em">Brahim Hammou · 2026 · BTS SIO SLAM</p>
+    <div class="d-flex flex-column flex-sm-row align-items-center gap-3" style="color:#94a3b8;font-size:.85rem">
+      <a href="/cdn-cgi/l/email-protection#5634783e373b3b3923163923223a39393d7835393b"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="__cf_email__" data-cfemail="82e0aceae3efefedf7c2edf7f6eeedede9ace1edef">[email&#160;protected]</span></a>
+      <span class="sep d-none d-sm-block">·</span>
+      <span class="d-flex align-items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.39 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>07 25 45 79 99</span>
+      <span class="sep d-none d-sm-block">·</span>
+      <span class="d-flex align-items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Savigny-le-Temple, France</span>
+    </div>

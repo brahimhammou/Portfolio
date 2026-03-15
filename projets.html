@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projets &amp; Certifs | Brahim Hammou</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    html{font-size:90%}
+    body{font-family:'Noto Sans',sans-serif;background:#f8fafc;color:#1e293b;overflow-x:hidden}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#f1f5f9}
+    ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}::-webkit-scrollbar-thumb:hover{background:#6366F1}
+    .bh-nav{background:rgba(30,30,46,.96);backdrop-filter:blur(18px);border-bottom:1px solid #252538;position:sticky;top:0;z-index:100;height:80px}
+    .bh-logo{font-weight:900;font-size:1.5rem;color:#fff;text-decoration:none}.bh-logo span{color:#6366F1}
+    .nav-pill-wrap{background:rgba(37,37,56,.8);border-radius:1.2rem;padding:6px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+    .nav-pill-wrap::-webkit-scrollbar{display:none}
+    .nav-pill{background:transparent;border:none;color:#94a3b8;font-weight:900;font-size:.85rem;padding:10px 16px;border-radius:.75rem;white-space:nowrap;transition:all .2s;cursor:pointer;text-decoration:none;display:inline-block}
+    .nav-pill:hover{color:#fff;background:rgba(100,116,139,.3)}
+    .nav-pill.active{background:linear-gradient(to right,#6366F1,#9333ea);color:#fff;transform:scale(1.05)}
+    .btn-cv{background:linear-gradient(to right,#6366F1,#9333ea);color:#fff;font-weight:700;font-size:.85rem;padding:10px 20px;border-radius:.75rem;text-decoration:none;white-space:nowrap;transition:all .2s;box-shadow:0 4px 14px rgba(99,102,241,.3)}
+    .btn-cv:hover{background:linear-gradient(to right,#818cf8,#a855f7);color:#fff}
+    .bh-footer{background:#1e1e2e;border-top:1px solid #252538;color:#fff}
+    .bh-footer a{color:#94a3b8;text-decoration:none;font-weight:500;font-size:.85rem;display:flex;align-items:center;gap:8px}
+    .bh-footer a:hover{color:#818cf8}.sep{color:#374151}
+    .lightbox-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);align-items:center;justify-content:center}
+    .lightbox-overlay.open{display:flex}
+    .lightbox-overlay img{max-width:92vw;max-height:92vh;object-fit:contain;border-radius:1rem;box-shadow:0 25px 60px rgba(0,0,0,.5)}
+    .lightbox-close{position:absolute;top:20px;right:20px;width:44px;height:44px;background:rgba(255,255,255,.2);border:none;border-radius:50%;color:#fff;font-size:1.2rem;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center}
+    .lightbox-close:hover{background:rgba(255,255,255,.35)}
+    /* Cards */
+    .proj-card{background:#fff;border:1px solid #e2e8f0;border-radius:1.5rem;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.05);transition:all .25s;display:flex;flex-direction:column;justify-content:space-between;height:100%}
+    .proj-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.12);transform:translateY(-4px)}
+    .icon-box{width:48px;height:48px;border-radius:.875rem;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+    .org-badge{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#f1f5f9;color:#475569;padding:5px 12px;border-radius:999px}
+    .tech-tag{font-size:.72rem;font-weight:700;background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;padding:4px 10px;border-radius:.4rem}
+    .preview-box{background:#f8fafc;border-radius:.75rem;padding:1rem;border:1px solid #f1f5f9}
+    .check-item{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:#475569;font-weight:500}
+    .btn-dark{background:#1e1e2e;color:#fff;font-weight:700;border:none;padding:10px 20px;border-radius:.75rem;cursor:pointer;font-size:.85rem;transition:all .2s}
+    .btn-dark:hover{background:#4F46E5;color:#fff}
+    /* Modal */
+    .modal-content{border-radius:2rem;border:none;overflow:hidden}
+    .modal-grad-header{padding:1.75rem 2rem;color:#fff;display:flex;justify-content:space-between;align-items:flex-start}
+    .modal-close-btn{width:44px;height:44px;background:rgba(255,255,255,.2);border:none;border-radius:50%;color:#fff;font-size:1.1rem;cursor:pointer;flex-shrink:0;transition:background .2s;display:flex;align-items:center;justify-content:center}
+    .modal-close-btn:hover{background:rgba(255,255,255,.35)}
+    .modal-body{padding:1.75rem 2rem}
+    .ctx-box{background:#f8fafc;border:1px solid #f1f5f9;border-radius:1rem;padding:1.25rem;font-size:.9rem;color:#475569;line-height:1.7}
+    .content-item{background:#fff;border:1px solid #f1f5f9;border-radius:1rem;padding:1rem;box-shadow:0 1px 3px rgba(0,0,0,.04);display:flex;align-items:flex-start;gap:12px;font-size:.85rem;color:#475569;font-weight:500}
+    .stack-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:1.25rem;padding:1.25rem;text-align:center}
+    .gh-link{background:#1e1e2e;color:#fff;text-decoration:none;padding:1rem;border-radius:1rem;display:flex;align-items:center;gap:12px;transition:background .2s}
+    .gh-link:hover{background:#252538;color:#fff}
+    /* Screenshot zoom */
+    .shot-wrap{position:relative;overflow:hidden;border-radius:1.25rem;cursor:zoom-in;border:1px solid #e2e8f0;background:#f1f5f9}
+    .shot-wrap img{width:100%;display:block;transition:transform .4s}
+    .shot-wrap:hover img{transform:scale(1.04)}
+    .shot-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:transparent;transition:background .2s}
+    .shot-wrap:hover .shot-overlay{background:rgba(0,0,0,.1)}
+    .shot-zoom{opacity:0;background:rgba(255,255,255,.9);border-radius:50%;padding:8px;transition:opacity .2s;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+    .shot-wrap:hover .shot-zoom{opacity:1}
+    .shot-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(30,30,46,.92),transparent);padding:1.2rem 1rem .8rem;color:#fff;font-weight:700;font-size:.8rem;translate:0 4px;transition:translate .2s}
+    .shot-wrap:hover .shot-caption{translate:0}
+  
+    .bh-inner{max-width:1600px;margin:0 auto;padding-left:1rem;padding-right:1rem}
+    @media(min-width:768px){.bh-inner{padding-left:2rem;padding-right:2rem}}
+    @media(min-width:992px){.bh-inner{padding-left:3.5rem;padding-right:3.5rem}}
+    @media(min-width:1400px){.bh-inner{padding-left:4.5rem;padding-right:4.5rem}}
+  </style>
+</head>
+<body>
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="Vue agrandie" onclick="event.stopPropagation()"/>
+</div>
+
+<nav class="bh-nav">
+  <div class="bh-inner d-flex align-items-center justify-content-between h-100">
+    <a href="index.html" class="bh-logo">BH<span>.</span></a>
+    <div class="nav-pill-wrap">
+      <a href="index.html"   class="nav-pill">accueil</a>
+      <a href="stages.html"  class="nav-pill">stages</a>
+      <a href="projets.html" class="nav-pill active">projets &amp; certifs</a>
+      <a href="veille.html"  class="nav-pill">veille</a>
+    </div>
+    <a href="CV.pdf" download class="btn-cv d-none d-lg-flex align-items-center gap-2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+      Télécharger CV
+    </a>
+  </div>
+</nav>
+
+<main class="bh-inner py-5">
+
+  <!-- Projets -->
+  <section class="mb-5">
+    <h2 class="fw-black fs-3 mb-1 pb-3 border-bottom d-flex align-items-center gap-2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      Mes Projets Informatiques
+    </h2>
+    <div class="row g-4 mt-1">
+
+      <!-- Sicily Lines -->
+      <div class="col-lg-6 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="d-flex justify-content-between align-items-start mb-4">
+              <div class="icon-box" style="background:linear-gradient(135deg,#6366F1,#4338ca)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              </div>
+              <span class="org-badge">Projet d'École</span>
+            </div>
+            <h3 class="fw-black fs-4 mb-2">Sicily Lines</h3>
+            <p class="text-secondary mb-4" style="font-size:.9rem">Développement complet du SI d'une compagnie maritime fictive (Client Lourd &amp; Site Web).</p>
+          </div>
+          <div>
+            <div class="preview-box mb-4">
+              <div class="check-item mb-2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Création de l'application WinForms (C#) pour la gestion de la flotte.</div>
+              <div class="check-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Développement du portail de réservation client en PHP.</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 pt-3 border-top">
+              <div class="d-flex flex-wrap gap-2">
+                <span class="tech-tag">C#</span><span class="tech-tag">PHP</span><span class="tech-tag">Sécurité</span>
+              </div>
+              <button class="btn-dark" onclick="openModal('sicilies')">Détails</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netflix -->
+      <div class="col-lg-6 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="d-flex justify-content-between align-items-start mb-4">
+              <div class="icon-box" style="background:linear-gradient(135deg,#a855f7,#7e22ce)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <span class="org-badge">Projet Personnel</span>
+            </div>
+            <h3 class="fw-black fs-4 mb-2">Netflix Data Analysis</h3>
+            <p class="text-secondary mb-4" style="font-size:.9rem">Analyse exploratoire et statistique d'un dataset Netflix massif pour identifier des tendances de contenu.</p>
+          </div>
+          <div>
+            <div class="preview-box mb-4">
+              <div class="check-item mb-2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Mise en place de l'environnement JupyterLab.</div>
+              <div class="check-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Data Cleaning avec Pandas : gestion des NaN et formatage des types.</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 pt-3 border-top">
+              <div class="d-flex flex-wrap gap-2">
+                <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span>
+              </div>
+              <button class="btn-dark" onclick="openModal('netflix')">Détails</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Certifs -->
+  <section>
+    <h2 class="fw-black fs-3 mb-1 pb-3 border-bottom d-flex align-items-center gap-2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+      Certifications &amp; Formations Complémentaires
+    </h2>
+    <div class="row g-4 mt-1">
+
+      <!-- SecNum -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="d-flex justify-content-between align-items-start mb-4">
+              <div class="icon-box" style="background:linear-gradient(135deg,#6366F1,#9333ea)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span class="org-badge">ANSSI</span>
+            </div>
+            <h3 class="fw-black fs-5 mb-2">SecNumAcadémie</h3>
+            <p class="text-secondary mb-4" style="font-size:.85rem">Certification attestant l'acquisition des bonnes pratiques en sécurité des systèmes d'information.</p>
+          </div>
+          <div>
+            <div class="preview-box mb-4">
+              <div class="check-item mb-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Panorama des menaces (Ransomwares, Phishing).</div>
+              <div class="check-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Sécurité de l'authentification et gestion des accès.</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-3 border-top">
+              <div class="d-flex flex-wrap gap-2"><span class="tech-tag">Cybersécurité</span><span class="tech-tag">Sensibilisation</span></div>
+              <button class="btn-dark" onclick="openModal('secnum')">Détails</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POO Python -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="d-flex justify-content-between align-items-start mb-4">
+              <div class="icon-box" style="background:linear-gradient(135deg,#10b981,#0d9488)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+              </div>
+              <span class="org-badge">OpenClassrooms</span>
+            </div>
+            <h3 class="fw-black fs-5 mb-2">POO Python</h3>
+            <p class="text-secondary mb-4" style="font-size:.85rem">Formation certifiante à la POO en Python : classes, héritage, surcharge, modules et exceptions.</p>
+          </div>
+          <div>
+            <div class="preview-box mb-4">
+              <div class="check-item mb-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 1 — Classes &amp; Méthodes : écrire et instancier des classes Python.</div>
+              <div class="check-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 2 — Héritage : sous-classes, surcharge, héritage multiple.</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-3 border-top">
+              <div class="d-flex flex-wrap gap-2"><span class="tech-tag">Python</span><span class="tech-tag">POO</span><span class="tech-tag">Héritage</span></div>
+              <button class="btn-dark" onclick="openModal('poo')">Détails</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DataViz -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="d-flex justify-content-between align-items-start mb-4">
+              <div class="icon-box" style="background:linear-gradient(135deg,#a855f7,#6366F1)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <span class="org-badge">OpenClassrooms</span>
+            </div>
+            <h3 class="fw-black fs-5 mb-2">NumPy, Pandas &amp; DataViz</h3>
+            <p class="text-secondary mb-4" style="font-size:.85rem">Formation certifiante en analyse de données Python. De NumPy jusqu'aux visualisations complexes avec Seaborn.</p>
+          </div>
+          <div>
+            <div class="preview-box mb-4">
+              <div class="check-item mb-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 1 — JupyterLab &amp; NumPy : arrays et manipulation de tableaux.</div>
+              <div class="check-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 2 — Pandas : DataFrames, filtrage, agrégation, fusion.</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 pt-3 border-top">
+              <div class="d-flex flex-wrap gap-2"><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div>
+              <button class="btn-dark" onclick="openModal('dataviz')">Détails</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ MODALES Bootstrap ══════════ -->
+
+<!-- Sicily Lines -->
+<div class="modal fade" id="modal-sicilies" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#6366F1,#4338ca)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">Projet d'École</span><h3 class="fw-black mb-0">Sicily Lines</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-8">
+            <h5 class="fw-black mb-2">Contexte du projet</h5>
+            <p class="ctx-box">SI d'une compagnie maritime fictive avec architecture Client Lourd / Client Léger.</p>
+            <h5 class="fw-black mt-4 mb-3">Missions techniques</h5>
+            <div class="d-flex flex-column gap-2">
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Création de l'application WinForms (C#) pour la gestion de la flotte.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Développement du portail de réservation client en PHP.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Sécurité : hachage Bcrypt, requêtes préparées (PDO) et protection CSRF.</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stack-box"><h6 class="fw-black text-uppercase small mb-3" style="letter-spacing:.1em">Stack &amp; Outils</h6><p class="text-secondary mb-0" style="font-size:.9rem">C#, PHP, MySQL, Architecture MVC.</p></div>
+          </div>
+        </div>
+        <h5 class="fw-black mt-4 mb-3">Galerie &amp; Captures</h5>
+        <div class="shot-wrap" onclick="openLightbox('image/sicilyLinesSite.png')">
+          <img src="image/sicilyLinesSite.png" onerror="this.src='https://placehold.co/800x450/252538/94a3b8?text=Sicily+Lines+Site'" alt="Site Web PHP"/>
+          <div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+          <div class="shot-caption">Site Web PHP — Sicily Lines</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Netflix -->
+<div class="modal fade" id="modal-netflix" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#a855f7,#7e22ce)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">Projet Personnel</span><h3 class="fw-black mb-0">Netflix Data Analysis</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-8">
+            <h5 class="fw-black mb-2">Contexte du projet</h5>
+            <p class="ctx-box">Projet d'ingénierie des données Python visant à identifier des tendances de contenu via un dataset Netflix massif.</p>
+            <h5 class="fw-black mt-4 mb-3">Missions techniques</h5>
+            <div class="d-flex flex-column gap-2">
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Mise en place de l'environnement JupyterLab.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Data Cleaning avec Pandas : gestion des NaN et formatage des types.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Dataviz via Matplotlib : analyse de corrélation et répartition des genres.</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stack-box"><h6 class="fw-black text-uppercase small mb-3" style="letter-spacing:.1em">Stack &amp; Outils</h6><p class="text-secondary mb-0" style="font-size:.9rem">Python, Pandas, Matplotlib, Jupyter Notebook.</p></div>
+          </div>
+        </div>
+        <h5 class="fw-black mt-4 mb-3">Galerie &amp; Captures</h5>
+        <div class="row g-3">
+          <div class="col-md-6"><div class="shot-wrap" onclick="openLightbox('image/netflix1.png')"><img src="image/netflix1.png" onerror="this.src='https://placehold.co/800x450/252538/94a3b8?text=Data+Cleaning'" alt="Data Cleaning"/><div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div><div class="shot-caption">Code Jupyter — Data Cleaning</div></div></div>
+          <div class="col-md-6"><div class="shot-wrap" onclick="openLightbox('image/netflix2.png')"><img src="image/netflix2.png" onerror="this.src='https://placehold.co/800x450/252538/94a3b8?text=Graphique+Matplotlib'" alt="Graphique"/><div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div><div class="shot-caption">Graphique Matplotlib</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SecNum -->
+<div class="modal fade" id="modal-secnum" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#6366F1,#9333ea)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">ANSSI</span><h3 class="fw-black mb-0">SecNumAcadémie</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <h5 class="fw-black mb-2">Description de la certification</h5>
+        <p class="ctx-box">Ce MOOC de l'ANSSI valide l'acquisition des bonnes pratiques essentielles en matière de sécurité informatique.</p>
+        <h5 class="fw-black mt-4 mb-3">Compétences évaluées</h5>
+        <div class="d-flex flex-column gap-2">
+          <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Panorama des menaces (Ransomwares, Phishing).</div>
+          <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Sécurité de l'authentification et gestion des accès.</div>
+          <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Sécurisation des postes de travail et échanges.</div>
+        </div>
+        <h5 class="fw-black mt-4 mb-3">Attestation officielle</h5>
+        <div class="shot-wrap" onclick="openLightbox('image/certif_anssi.png')">
+          <img src="image/certif_anssi.png" onerror="this.src='https://placehold.co/800x1130/252538/94a3b8?text=Certificat+SecNumAcademie'" alt="Certificat" style="aspect-ratio:auto"/>
+          <div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+          <div class="shot-caption">Certificat SecNumAcadémie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POO Python -->
+<div class="modal fade" id="modal-poo" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#10b981,#0d9488)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">OpenClassrooms</span><h3 class="fw-black mb-0">POO Python</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-8">
+            <h5 class="fw-black mb-2">Description de la certification</h5>
+            <p class="ctx-box">Certification OpenClassrooms validant la maîtrise de la POO en Python. En complément du cours, j'ai conçu de mon côté une simulation d'écosystème proies/prédateurs pour mettre en pratique concrètement les concepts : chaque entité est une instance de classe héritant d'Animal, avec ses propres méthodes se_deplacer(), manger() et se_reproduire().</p>
+            <h5 class="fw-black mt-4 mb-3">Contenu &amp; compétences</h5>
+            <div class="d-flex flex-column gap-2">
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 1 — Classes &amp; Méthodes : comprendre la POO, écrire et instancier des classes Python, créer et utiliser des objets.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 2 — Héritage : sous-classes, surcharge de méthodes, hiérarchies d'héritage, héritage multiple et objets dans des collections.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 3 — Architecture : découper le code en modules, décomposer un problème POO, gérer les exceptions.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Projet personnel : simulation mathématique d'un écosystème (classes Animal → Proie / Prédateur) publiée sur GitHub.</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <a href="https://github.com/brahimhammou/Denombrements/blob/master/ecosystem_sim.py" target="_blank" rel="noopener noreferrer" class="gh-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3c3 0 6-2 6-7a5 5 0 0 0-1.4-3.6 5 5 0 0 0-.1-3.6s-1.1-.3-3.5 1.3a12.8 12.8 0 0 0-6 0C6.1 2.7 5 3 5 3a5 5 0 0 0-.1 3.6A5 5 0 0 0 3.5 10c0 5 3 7 6 7a4.8 4.8 0 0 0-1.2 3v4"/><path d="M5 19l-2-2-3-1"/></svg>
+              <div><p class="fw-bold mb-0" style="font-size:.9rem">Voir sur GitHub</p><p class="mb-0" style="color:#94a3b8;font-size:.75rem">ecosystem_sim.py</p></div>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+        <h5 class="fw-black mt-4 mb-3">Attestation officielle</h5>
+        <div class="shot-wrap" onclick="openLightbox('image/certifpythonobjet.png')">
+          <img src="image/certifpythonobjet.png" onerror="this.src='https://placehold.co/800x1130/252538/94a3b8?text=Attestation+POO+Python'" alt="Attestation" style="aspect-ratio:auto"/>
+          <div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+          <div class="shot-caption">Attestation OpenClassrooms — POO Python</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DataViz -->
+<div class="modal fade" id="modal-dataviz" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#a855f7,#6366F1)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">OpenClassrooms</span><h3 class="fw-black mb-0">NumPy, Pandas &amp; DataViz</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <h5 class="fw-black mb-2">Description de la certification</h5>
+        <p class="ctx-box">Certification OpenClassrooms validant la maîtrise complète de la chaîne de traitement de la donnée avec Python dans JupyterLab.</p>
+        <h5 class="fw-black mt-4 mb-3">Contenu &amp; compétences</h5>
+        <div class="d-flex flex-column gap-2">
+          <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 1 — JupyterLab &amp; NumPy : prise en main du notebook, création de premiers arrays, manipulation et transformation de tableaux.</div>
+          <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 2 — Pandas : création de DataFrames, manipulation, filtrage, agrégation et fusion de données.</div>
+          <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Partie 3 — Matplotlib &amp; Seaborn : bonnes pratiques dataviz, tracé, personnalisation et graphiques complexes.</div>
+        </div>
+        <h5 class="fw-black mt-4 mb-3">Attestation officielle</h5>
+        <div class="shot-wrap" onclick="openLightbox('image/certifpythondata.png')">
+          <img src="image/certifpythondata.png" onerror="this.src='https://placehold.co/800x1130/252538/94a3b8?text=Attestation+DataViz'" alt="Attestation" style="aspect-ratio:auto"/>
+          <div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+          <div class="shot-caption">Attestation OpenClassrooms — DataViz</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bh-footer mt-5">
+  <div class="bh-inner py-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4">
+    <p class="mb-0 fw-bold text-uppercase small" style="color:#94a3b8;letter-spacing:.1em">Brahim Hammou · 2026 · BTS SIO SLAM</p>
+    <div class="d-flex flex-column flex-sm-row align-items-center gap-3" style="color:#94a3b8;font-size:.85rem">
+      <a href="/cdn-cgi/l/email-protection#6f0d41070e0202001a2f001a1b03000004410c0002"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="__cf_email__" data-cfemail="0f6d21676e6262607a4f607a7b63606064216c6062">[email&#160;protected]</span></a>
+      <span class="sep d-none d-sm-block">·</span>
+      <span class="d-flex align-items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.39 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>07 25 45 79 99</span>
+      <span class="sep d-none d-sm-block">·</span>
+      <span class="d-flex align-items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Savigny-le-Temple, France</span>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function openLightbox(src){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').src = '';
+  }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLightbox(); });
+
+  function openModal(id){
+    var el = document.getElementById('modal-' + id);
+    if(el){ new bootstrap.Modal(el).show(); }
+  }
+</script>
+</body>
+</html>
