@@ -3,85 +3,108 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio | Brahim Hammou</title>
+  <title>Portfolio | Brahim Hammou - CDI Dev & Réseaux</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <style>
-    html { font-size: 90%; }
+    html { font-size: 90%; scroll-behavior: smooth; }
     body { font-family: 'Noto Sans', sans-serif; background: #f8fafc; color: #1e293b; overflow-x: hidden; }
-    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar { width: 8px; } 
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #6366F1; }
-    .bh-inner{max-width:1600px;margin:0 auto;padding-left:1rem;padding-right:1rem}
-    @media(min-width:768px){.bh-inner{padding-left:2rem;padding-right:2rem}}
-    @media(min-width:992px){.bh-inner{padding-left:3.5rem;padding-right:3.5rem}}
-    @media(min-width:1400px){.bh-inner{padding-left:4.5rem;padding-right:4.5rem}}
+    
+    .bh-inner { max-width: 1400px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+    @media(min-width: 992px) { .bh-inner { padding-left: 3rem; padding-right: 3rem; } }
 
     /* ── NAV ── */
-    .bh-nav { background: rgba(30,30,46,.96); backdrop-filter: blur(18px); border-bottom: 1px solid #252538; position: sticky; top: 0; z-index: 100; height: 80px; }
+    .bh-nav { background: rgba(30,30,46,.96); backdrop-filter: blur(18px); border-bottom: 1px solid #252538; position: sticky; top: 0; z-index: 1000; height: 80px; }
     .bh-logo { font-weight: 900; font-size: 1.5rem; color: #fff; text-decoration: none; }
     .bh-logo span { color: #6366F1; }
     .nav-pill-wrap { background: rgba(37,37,56,.8); border-radius: 1.2rem; padding: 6px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
     .nav-pill-wrap::-webkit-scrollbar { display: none; }
-    .nav-pill { background: transparent; border: none; color: #94a3b8; font-weight: 900; font-size: .85rem; padding: 10px 16px; border-radius: .75rem; white-space: nowrap; transition: all .2s; cursor: pointer; }
+    .nav-pill { background: transparent; border: none; color: #94a3b8; font-weight: 800; font-size: .85rem; padding: 10px 16px; border-radius: .75rem; white-space: nowrap; transition: all .2s; cursor: pointer; text-decoration: none; }
     .nav-pill:hover { color: #fff; background: rgba(100,116,139,.3); }
-    .nav-pill.active { background: linear-gradient(to right, #6366F1, #9333ea); color: #fff; transform: scale(1.05); }
+    .nav-pill.active, .nav-pill:active { background: linear-gradient(to right, #6366F1, #9333ea); color: #fff; transform: scale(1.05); }
     .btn-cv { background: linear-gradient(to right, #6366F1, #9333ea); color: #fff; font-weight: 700; font-size: .85rem; padding: 10px 20px; border-radius: .75rem; text-decoration: none; white-space: nowrap; transition: all .2s; box-shadow: 0 4px 14px rgba(99,102,241,.3); }
-    .btn-cv:hover { background: linear-gradient(to right, #818cf8, #a855f7); color: #fff; }
-
-    /* ── FOOTER ── */
-    .bh-footer { background: #1e1e2e; border-top: 1px solid #252538; color: #fff; }
-    .bh-footer a { color: #94a3b8; text-decoration: none; font-weight: 500; font-size: .85rem; display: flex; align-items: center; gap: 8px; }
-    .bh-footer a:hover { color: #818cf8; }
-    .bh-footer .sep { color: #374151; }
-
-    /* ── LIGHTBOX ── */
-    .lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,.92); backdrop-filter: blur(10px); align-items: center; justify-content: center; }
-    .lightbox-overlay.open { display: flex; }
-    .lightbox-overlay img { max-width: 92vw; max-height: 92vh; object-fit: contain; border-radius: 1rem; box-shadow: 0 25px 60px rgba(0,0,0,.5); }
-    .lightbox-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; background: rgba(255,255,255,.2); border: none; border-radius: 50%; color: #fff; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; }
-    .lightbox-close:hover { background: rgba(255,255,255,.35); }
+    .btn-cv:hover { background: linear-gradient(to right, #818cf8, #a855f7); color: #fff; transform: translateY(-2px); }
 
     /* ── HERO ── */
-    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px; border-radius: 999px; border: 1px solid #c7d2fe; background: rgba(238,242,255,.85); font-weight: 700; font-size: .85rem; color: #4338ca; margin-bottom: 1.25rem; }
-    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #6366F1; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.4} }
-    .hero-title { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; color: #0f172a; }
-    .hero-title .gradient { background: linear-gradient(to right, #6366F1, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-blob-1 { position: absolute; top: 0; left: 0; width: 240px; height: 240px; background: #c7d2fe; border-radius: 50%; mix-blend-mode: multiply; filter: blur(80px); opacity: .4; pointer-events: none; }
-    .hero-blob-2 { position: absolute; top: 144px; right: 0; width: 240px; height: 240px; background: #e9d5ff; border-radius: 50%; mix-blend-mode: multiply; filter: blur(80px); opacity: .4; pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 999px; border: 1px solid #c7d2fe; background: rgba(238,242,255,.9); font-weight: 800; font-size: .9rem; color: #4338ca; margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.1); }
+    .hero-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: #10b981; animation: pulse 2s infinite; box-shadow: 0 0 10px #10b981; }
+    @keyframes pulse { 0%,100%{opacity:1; transform: scale(1);} 50%{opacity:.5; transform: scale(1.2);} }
+    .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -.02em; color: #0f172a; }
+    .hero-title .gradient { background: linear-gradient(135deg, #6366F1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-blob-1 { position: absolute; top: -10%; left: -5%; width: 400px; height: 400px; background: #c7d2fe; border-radius: 50%; mix-blend-mode: multiply; filter: blur(100px); opacity: .5; pointer-events: none; }
+    .hero-blob-2 { position: absolute; top: 20%; right: -5%; width: 350px; height: 350px; background: #e9d5ff; border-radius: 50%; mix-blend-mode: multiply; filter: blur(100px); opacity: .5; pointer-events: none; }
 
     /* ── BUTTONS ── */
-    .btn-dark { background: #1e1e2e; color: #fff; font-weight: 900; border: none; padding: 12px 24px; border-radius: .75rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all .2s; font-size: .9rem; }
-    .btn-dark:hover { background: #4F46E5; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,102,241,.3); }
-    .btn-outline { background: #fff; border: 2px solid #e2e8f0; color: #334155; font-weight: 700; padding: 12px 24px; border-radius: .75rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all .2s; font-size: .9rem; cursor: pointer; }
-    .btn-outline:hover { background: #f8fafc; color: #334155; }
+    .btn-dark-custom { background: #1e1e2e; color: #fff; font-weight: 900; border: none; padding: 14px 28px; border-radius: .75rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all .2s; font-size: 1rem; }
+    .btn-dark-custom:hover { background: #4F46E5; color: #fff; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(99,102,241,.4); }
+    .btn-outline-custom { background: #fff; border: 2px solid #e2e8f0; color: #334155; font-weight: 800; padding: 12px 26px; border-radius: .75rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all .2s; font-size: 1rem; cursor: pointer; }
+    .btn-outline-custom:hover { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; transform: translateY(-2px); }
 
-    /* ── CV SECTION ── */
-    .timeline { border-left: 2px solid #e2e8f0; padding-left: 24px; margin-left: 16px; }
-    .timeline-item { position: relative; margin-bottom: 2rem; }
-    .timeline-dot { position: absolute; left: -37px; top: 6px; width: 16px; height: 16px; border-radius: 50%; outline: 4px solid #f8fafc; transition: transform .2s; }
-    .timeline-item:hover .timeline-dot { transform: scale(1.25); }
+    /* ── SECTIONS ── */
+    section { scroll-margin-top: 100px; padding-top: 4rem; padding-bottom: 4rem; }
+    .section-title { font-weight: 900; font-size: 2.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; color: #0f172a; }
+    .section-title-icon { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 12px; color: white; }
 
-    /* ── SKILL TAGS ── */
-    .tag-indigo { background: #eef2ff; color: #4338ca; font-weight: 700; font-size: .8rem; padding: 6px 12px; border-radius: .6rem; display: inline-block; }
-    .tag-purple { background: #faf5ff; color: #7e22ce; font-weight: 700; font-size: .8rem; padding: 6px 12px; border-radius: .6rem; display: inline-block; }
-    .tag-slate  { background: #f1f5f9; color: #475569; font-weight: 700; font-size: .8rem; padding: 6px 12px; border-radius: .6rem; display: inline-block; }
+    /* ── TIMELINE ── */
+    .timeline { border-left: 3px solid #e2e8f0; padding-left: 30px; margin-left: 20px; position: relative; }
+    .timeline-item { position: relative; margin-bottom: 3rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot { position: absolute; left: -43.5px; top: 4px; width: 24px; height: 24px; border-radius: 50%; outline: 5px solid #f8fafc; transition: transform .3s ease; display: flex; align-items: center; justify-content: center; }
+    .timeline-item:hover .timeline-dot { transform: scale(1.3); }
+    .timeline-date { font-weight: 800; color: #64748b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; display: block; }
+    .timeline-card { background: white; border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 1.8rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); transition: all 0.3s; }
+    .timeline-card:hover { box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.08); border-color: #c7d2fe; transform: translateY(-3px); }
 
-    /* ── SKILLS CARD ── */
-    .skills-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 2rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
-    @media (min-width: 992px) { .skills-card { position: sticky; top: 7rem; } }
+    /* ── PROJECT CARDS ── */
+    .proj-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,.03); transition: all .3s; display: flex; flex-direction: column; justify-content: space-between; height: 100%; position: relative; overflow: hidden; }
+    .proj-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,.08); transform: translateY(-5px); border-color: #a5b4fc; }
+    .icon-box { width: 55px; height: 55px; border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 8px 20px rgba(0,0,0,.15); margin-bottom: 1.5rem; }
+    .tech-tag { font-size: .75rem; font-weight: 800; background: #f1f5f9; color: #475569; padding: 6px 12px; border-radius: 20px; transition: all 0.2s; border: 1px solid transparent; }
+    .proj-card:hover .tech-tag { background: #eef2ff; color: #4f46e5; }
+    
+    /* ── SKILLS TAGS ── */
+    .skill-group-title { font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .skill-tag { font-size: 0.95rem; font-weight: 700; padding: 10px 18px; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; border: 1px solid transparent; }
+    .skill-tag:hover { transform: translateY(-2px); }
+    .tag-dev { background: #eef2ff; color: #4338ca; border-color: #c7d2fe; }
+    .tag-dev:hover { background: #4338ca; color: white; }
+    .tag-data { background: #faf5ff; color: #7e22ce; border-color: #e9d5ff; }
+    .tag-data:hover { background: #7e22ce; color: white; }
+    .tag-infra { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+    .tag-infra:hover { background: #15803d; color: white; }
 
-    /* ── IMG ZOOM ── */
-    .img-zoom-wrap { position: relative; overflow: hidden; border-radius: 1rem; cursor: zoom-in; border: 1px solid #e2e8f0; background: #f1f5f9; }
-    .img-zoom-wrap img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform .3s; display: block; }
-    .img-zoom-wrap:hover img { transform: scale(1.02); }
-    .img-zoom-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: transparent; transition: background .2s; }
-    .img-zoom-wrap:hover .img-zoom-icon { background: rgba(0,0,0,.1); }
-    .zoom-btn { opacity: 0; background: rgba(255,255,255,.9); border-radius: 50%; padding: 8px; display: flex; transition: opacity .2s; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
-    .img-zoom-wrap:hover .zoom-btn { opacity: 1; }
-    .img-caption { position: absolute; bottom: 0; width: 100%; background: rgba(30,30,46,.9); padding: 10px 12px; }
-    .img-caption span { color: #fff; font-weight: 700; font-size: .8rem; }
+    /* ── FOOTER ── */
+    .bh-footer { background: #1e1e2e; border-top: 1px solid #252538; color: #fff; padding: 3rem 0; }
+    .bh-footer a { color: #94a3b8; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .bh-footer a:hover { color: #818cf8; }
+
+    /* ── MODALS ── */
+    .modal-content { border-radius: 2rem; border: none; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .modal-grad-header { padding: 2rem; color: #fff; display: flex; justify-content: space-between; align-items: flex-start; }
+    .modal-close-btn { width: 40px; height: 40px; background: rgba(255,255,255,.2); border: none; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+    .modal-close-btn:hover { background: rgba(255,255,255,.4); }
+    
+    /* ── LIGHTBOX & SHOTS ── */
+    .lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.92); backdrop-filter: blur(10px); align-items: center; justify-content: center; }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img { max-width: 92vw; max-height: 92vh; object-fit: contain; border-radius: 1rem; box-shadow: 0 25px 60px rgba(0,0,0,.5); }
+    .lightbox-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; background: rgba(255,255,255,.2); border: none; border-radius: 50%; color: #fff; font-size: 1.2rem; cursor: pointer; transition: background .2s; display: flex; align-items: center; justify-content: center; }
+    .lightbox-close:hover { background: rgba(255,255,255,.35); }
+    .shot-wrap { position: relative; overflow: hidden; border-radius: 1.25rem; cursor: zoom-in; border: 1px solid #e2e8f0; background: #f1f5f9; }
+    .shot-wrap img { width: 100%; display: block; transition: transform .4s; }
+    .shot-wrap:hover img { transform: scale(1.04); }
+    .shot-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: transparent; transition: background .2s; }
+    .shot-wrap:hover .shot-overlay { background: rgba(0,0,0,.1); }
+    .shot-zoom { opacity: 0; background: rgba(255,255,255,.9); border-radius: 50%; padding: 8px; transition: opacity .2s; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .shot-wrap:hover .shot-zoom { opacity: 1; }
+    .shot-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top,rgba(30,30,46,.92),transparent); padding: 1.2rem 1rem .8rem; color: #fff; font-weight: 700; font-size: .8rem; translate: 0 4px; transition: translate .2s; }
+    .shot-wrap:hover .shot-caption { translate: 0; }
+    .ctx-box { background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 1rem; padding: 1.25rem; font-size: .9rem; color: #475569; line-height: 1.7; }
+    .content-item { background: #fff; border: 1px solid #f1f5f9; border-radius: 1rem; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.04); display: flex; align-items: flex-start; gap: 12px; font-size: .85rem; color: #475569; font-weight: 500; margin-bottom: 0.5rem;}
   </style>
 </head>
 <body>
@@ -95,166 +118,242 @@
 <!-- ── NAVBAR ── -->
 <nav class="bh-nav">
   <div class="bh-inner d-flex align-items-center justify-content-between h-100">
-    <a href="index.html" class="bh-logo">BH<span>.</span></a>
-    <div class="nav-pill-wrap">
-      <a href="index.html"   class="nav-pill active">accueil</a>
-      <a href="stages.html"  class="nav-pill">stages</a>
-      <a href="projets.html" class="nav-pill">projets &amp; certifs</a>
-      <a href="veille.html"  class="nav-pill">veille</a>
+    <a href="#accueil" class="bh-logo">BH<span>.</span></a>
+    <div class="nav-pill-wrap d-none d-md-flex">
+      <a href="#accueil" class="nav-pill">Accueil</a>
+      <a href="#competences" class="nav-pill">Compétences</a>
+      <a href="#experiences" class="nav-pill">Expériences</a>
+      <a href="#projets" class="nav-pill">Projets</a>
+      <a href="#certifications" class="nav-pill">Certifications</a>
     </div>
-    <a href="CV.pdf" download class="btn-cv d-none d-lg-flex align-items-center gap-2">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+    <a href="CV.pdf" download class="btn-cv d-flex align-items-center gap-2">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
       Télécharger CV
     </a>
   </div>
 </nav>
 
-<!-- ── MAIN ── -->
-<main class="bh-inner py-5">
-
-  <!-- HERO -->
-  <section class="position-relative overflow-hidden pt-4 pt-md-5 mb-5">
+<main>
+  <!-- ── HERO SECTION ── -->
+  <section id="accueil" class="position-relative overflow-hidden" style="padding-top: 6rem; padding-bottom: 6rem; min-height: 85vh; display: flex; align-items: center;">
     <div class="hero-blob-1"></div>
     <div class="hero-blob-2"></div>
-    <div class="position-relative" style="z-index:1">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Disponible pour une alternance (Septembre 2026)
+    <div class="bh-inner position-relative w-100" style="z-index:1">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Recherche Active : CDI
+          </div>
+          <h1 class="hero-title mb-4">
+            Développeur<br>
+            <span class="gradient">Logiciel & Backend</span>
+          </h1>
+          <p class="text-secondary fs-6 mb-4" style="max-width:650px;line-height:1.75">
+            <strong class="text-dark">Brahim Hammou</strong> · Diplômé d'un 
+            <span class="fw-bold text-decoration-underline" style="text-decoration-color:#6366F1;text-underline-offset:3px">BTS SIO SLAM</span>
+            et actuellement en Licence Générale au CNAM. Je possède une double compétence dans la conception applicative (Python, C#, SQL) et la gestion d'environnements sécurisés (DevOps, Linux, Réseaux).
+          </p>
+          <a href="#experiences" class="btn-dark-custom">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Voir mon parcours
+          </a>
+        </div>
       </div>
-      <h1 class="hero-title mb-4">
-        Développeur<br>
-        <span class="gradient">.NET &amp; Python</span>
-      </h1>
-      <p class="text-secondary fs-6 mb-4" style="max-width:600px;line-height:1.75">
-        <strong class="text-dark">Brahim Hammou</strong> · Étudiant en
-        <span class="fw-bold text-decoration-underline" style="text-decoration-color:#6366F1;text-underline-offset:3px">BTS SIO SLAM</span>
-        au Lycée de Cachan. Je conçois des solutions logicielles robustes, de l'optimisation de bases de données à l'architecture applicative.
-      </p>
-      <a href="stages.html" class="btn-outline">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        Voir mon parcours
-      </a>
     </div>
   </section>
 
-  <!-- CV -->
-  <section class="pt-4 border-top">
-    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-5">
-      <div>
-        <h2 class="fw-black fs-3 mb-1 d-flex align-items-center gap-2">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          Mon Curriculum Vitae
-        </h2>
-        <p class="text-secondary mb-0">Aperçu détaillé de mon parcours et de mes compétences.</p>
+  <!-- ── COMPÉTENCES ── -->
+  <section id="competences" class="bh-inner border-top">
+    <h2 class="section-title">
+      <div class="section-title-icon" style="background: linear-gradient(135deg, #10b981, #047857);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></div>
+      Expertise Technique
+    </h2>
+    <div class="row mt-5 g-5">
+      <div class="col-md-4">
+        <h4 class="skill-group-title">Développement Applicatif</h4>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="skill-tag tag-dev">Python</span>
+          <span class="skill-tag tag-dev">C# / .NET</span>
+          <span class="skill-tag tag-dev">PHP</span>
+          <span class="skill-tag tag-dev">Bash</span>
+        </div>
       </div>
-      <a href="CV.pdf" download class="btn-dark flex-shrink-0">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        Télécharger mon CV
-      </a>
+      <div class="col-md-4">
+        <h4 class="skill-group-title">Réseaux & Cybersécurité</h4>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="skill-tag tag-infra">Linux (Admin)</span>
+          <span class="skill-tag tag-infra">TCP/IP & OSI</span>
+          <span class="skill-tag tag-infra">DevSecOps / OWASP</span>
+          <span class="skill-tag tag-infra">Wireshark & Nmap</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h4 class="skill-group-title">Data & DevOps</h4>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="skill-tag tag-data">SQL Server / PostgreSQL</span>
+          <span class="skill-tag tag-data">Pandas & NumPy</span>
+          <span class="skill-tag tag-data">Azure DevOps (CI/CD)</span>
+          <span class="skill-tag tag-data">Git & GitHub</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="row g-5">
-      <!-- col gauche -->
-      <div class="col-lg-8">
+  <!-- ── EXPERIENCES ── -->
+  <section id="experiences" class="bh-inner border-top pt-5">
+    <h2 class="section-title">
+      <div class="section-title-icon" style="background: linear-gradient(135deg, #6366F1, #4338ca);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      Expériences Professionnelles
+    </h2>
+    <div class="timeline mt-5">
+      <!-- ZAM -->
+      <div class="timeline-item">
+        <span class="timeline-dot" style="background:#6366F1"></span>
+        <span class="timeline-date">Janvier 2026 - Février 2026</span>
+        <div class="timeline-card">
+          <h4 class="fw-black fs-4 mb-1">Développeur Backend (Stage)</h4>
+          <h5 class="fw-bold mb-3" style="color:#4F46E5;">Groupe Jacky Perrenot (ZAMINFORMATIQUE)</h5>
+          <p class="text-secondary mb-3">Développement et maintenance évolutive de l'ERP logistique "NOA". Intégration de correctifs SQL critiques, gestion des logs applicatifs et cycle de vie DevOps complet.</p>
+          <button class="btn-outline-custom btn-sm" onclick="openModal('zam')">Détails du stage</button>
+        </div>
+      </div>
+      <!-- VIR -->
+      <div class="timeline-item">
+        <span class="timeline-dot" style="background:#a855f7"></span>
+        <span class="timeline-date">Mai 2025</span>
+        <div class="timeline-card">
+          <h4 class="fw-black fs-4 mb-1">Développeur Python (Stage)</h4>
+          <h5 class="fw-bold mb-3" style="color:#9333ea;">VIR by JP (JP Home Formation)</h5>
+          <p class="text-secondary mb-3">Automatisation et extraction de données massives depuis des bases logistiques. Création de scripts Python pour la refonte d'outils métiers.</p>
+          <button class="btn-outline-custom btn-sm" onclick="openModal('vir')">Détails du stage</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Expériences -->
-        <h3 class="fw-black fs-4 mb-4 d-flex align-items-center gap-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-          Expériences Professionnelles
-        </h3>
-        <div class="timeline mb-5">
-          <div class="timeline-item">
-            <span class="timeline-dot" style="background:#6366F1"></span>
-            <h4 class="fw-bold fs-5 mb-1">Développeur C# / VB.NET (Stage 2A)</h4>
-            <h5 class="fw-bold mb-2" style="color:#4F46E5;font-size:.95rem">Groupe Jacky Perrenot · 2025 - 2026</h5>
-            <p class="text-secondary mb-2" style="font-size:.95rem">Développement et maintenance évolutive de l'ERP interne NOA en environnement Agile.</p>
-            <a href="stages.html" class="fw-bold text-decoration-none d-inline-flex align-items-center gap-1" style="color:#4F46E5;font-size:.85rem">
-              Voir le détail
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
+  <!-- ── FORMATIONS ── -->
+  <section id="formations" class="bh-inner border-top pt-5">
+    <h2 class="section-title">
+      <div class="section-title-icon" style="background: linear-gradient(135deg, #1e293b, #0f172a);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+      Formations
+    </h2>
+    <div class="timeline mt-5">
+      <div class="timeline-item">
+        <span class="timeline-dot" style="background:#1e1e2e"></span>
+        <span class="timeline-date">2026 - Présent</span>
+        <div class="timeline-card">
+          <h4 class="fw-black fs-5 mb-1">Licence Générale Informatique (À la carte)</h4>
+          <h5 class="fw-bold text-secondary mb-2">CNAM</h5>
+          <p class="text-secondary mb-0">Validation des compétences en développement avec un renforcement spécifique en réseaux et cybersécurité.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot" style="background:#cbd5e1"></span>
+        <span class="timeline-date">2024 - 2026</span>
+        <div class="timeline-card">
+          <h4 class="fw-black fs-5 mb-1">BTS SIO option SLAM</h4>
+          <h5 class="fw-bold text-secondary mb-0">Lycée de Cachan</h5>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot" style="background:#cbd5e1"></span>
+        <span class="timeline-date">2021 - 2022</span>
+        <div class="timeline-card">
+          <h4 class="fw-black fs-5 mb-1">1ère année Pré-ingénieur</h4>
+          <h5 class="fw-bold text-secondary mb-0">CY Tech — Cergy-Pontoise</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJETS ── -->
+  <section id="projets" class="bh-inner border-top">
+    <h2 class="section-title">
+      <div class="section-title-icon" style="background: linear-gradient(135deg, #a855f7, #7e22ce);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+      Projets Récents
+    </h2>
+    <div class="row g-4 mt-4">
+      <!-- Infra -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="icon-box" style="background:linear-gradient(135deg,#10b981,#047857)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="14" rx="2"/><rect width="20" height="8" x="2" y="2" rx="2"/><line x1="6" x2="6.01" y1="18" y2="18"/><line x1="6" x2="6.01" y1="6" y2="6"/></svg>
+            </div>
+            <h3 class="fw-black fs-4 mb-2">Infra & Cybersécurité</h3>
+            <p class="text-secondary mb-4" style="font-size:.9rem">Conception d'une architecture réseau sécurisée isolée via VMs et simulations d'attaques.</p>
           </div>
-          <div class="timeline-item">
-            <span class="timeline-dot" style="background:#a855f7"></span>
-            <h4 class="fw-bold fs-5 mb-1">Développeur Python (Stage 1A)</h4>
-            <h5 class="fw-bold mb-2" style="color:#9333ea;font-size:.95rem">VIR by JP · Mai 2025</h5>
-            <p class="text-secondary mb-2" style="font-size:.95rem">Automatisation et extraction de données de facturation. Refonte d'outils liés aux logiciels métiers (Akanea, Urbantz).</p>
-            <a href="stages.html" class="fw-bold text-decoration-none d-inline-flex align-items-center gap-1" style="color:#9333ea;font-size:.85rem">
-              Voir le détail
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
+          <div class="d-flex align-items-center justify-content-between pt-3 border-top">
+            <span class="tech-tag">Réseau</span>
+            <button class="btn-dark-custom" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openModal('infra')">Détails</button>
           </div>
         </div>
-
-        <!-- Formations -->
-        <h3 class="fw-black fs-4 mb-4 d-flex align-items-center gap-2">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          Formations &amp; Diplômes
-        </h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <span class="timeline-dot" style="background:#1e1e2e"></span>
-            <h4 class="fw-bold fs-5 mb-1">BTS SIO option SLAM</h4>
-            <h5 class="fw-bold text-secondary mb-2" style="font-size:.95rem">Lycée de Cachan · 2023 - Présent</h5>
-            <p class="text-secondary" style="font-size:.95rem">Spécialisation en Solutions Logicielles et Applications Métiers. Développement logiciel, architecture MVC, BDD, cybersécurité.</p>
+      </div>
+      <!-- Sicily Lines -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="icon-box" style="background:linear-gradient(135deg,#6366F1,#4338ca)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16"/><path d="M12 2v10"/><path d="M8 22h8"/><path d="M12 12 8 8"/><path d="m12 12 4-4"/></svg>
+            </div>
+            <h3 class="fw-black fs-4 mb-2">Sicily Lines</h3>
+            <p class="text-secondary mb-4" style="font-size:.9rem">Développement complet du SI d'une compagnie maritime fictive (Client Lourd & Site Web).</p>
           </div>
-          <div class="timeline-item">
-            <span class="timeline-dot" style="background:#cbd5e1"></span>
-            <h4 class="fw-bold fs-5 mb-1">1ère année Pré-ingénieur</h4>
-            <h5 class="fw-bold text-secondary mb-2" style="font-size:.95rem">CY Tech (Cergy-Pontoise) · 2021-2022</h5>
-            <p class="text-secondary" style="font-size:.95rem">Formation intensive en mathématiques et informatique fondamentale.</p>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-dot" style="background:#cbd5e1"></span>
-            <h4 class="fw-bold fs-5 mb-1">Baccalauréat Général</h4>
-            <h5 class="fw-bold text-secondary mb-2" style="font-size:.95rem">Lycée Langevin-Wallon · 2021</h5>
-            <p class="text-secondary" style="font-size:.95rem">Spécialités Mathématiques et Physique-Chimie, Maths expertes.</p>
+          <div class="d-flex align-items-center justify-content-between pt-3 border-top">
+            <span class="tech-tag">C# / PHP</span>
+            <button class="btn-dark-custom" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openModal('sicilies')">Détails</button>
           </div>
         </div>
+      </div>
+      <!-- Netflix -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100">
+          <div>
+            <div class="icon-box" style="background:linear-gradient(135deg,#a855f7,#7e22ce)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <h3 class="fw-black fs-4 mb-2">Netflix Data Analysis</h3>
+            <p class="text-secondary mb-4" style="font-size:.9rem">Analyse exploratoire d'un dataset massif pour identifier des tendances via Pandas & Matplotlib.</p>
+          </div>
+          <div class="d-flex align-items-center justify-content-between pt-3 border-top">
+            <span class="tech-tag">Python / Data</span>
+            <button class="btn-dark-custom" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openModal('netflix')">Détails</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      </div><!-- /col gauche -->
-
-      <!-- Compétences -->
-      <div class="col-lg-4">
-        <div class="skills-card">
-          <h3 class="fw-black fs-4 mb-4 d-flex align-items-center gap-2">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-            Compétences
-          </h3>
-          <div class="mb-4">
-            <p class="text-uppercase fw-black mb-2" style="font-size:.7rem;color:#94a3b8;letter-spacing:.1em">Développement</p>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="tag-indigo">C#</span><span class="tag-indigo">VB.NET</span><span class="tag-indigo">Python</span><span class="tag-indigo">PHP</span><span class="tag-indigo">HTML/CSS</span>
-            </div>
-          </div>
-          <div class="mb-4">
-            <p class="text-uppercase fw-black mb-2" style="font-size:.7rem;color:#94a3b8;letter-spacing:.1em">Data &amp; SGBD</p>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="tag-purple">SQL Server</span><span class="tag-purple">MySQL</span><span class="tag-purple">Pandas</span><span class="tag-purple">Matplotlib</span><span class="tag-purple">JupyterLab</span>
-            </div>
-          </div>
-          <div class="mb-4">
-            <p class="text-uppercase fw-black mb-2" style="font-size:.7rem;color:#94a3b8;letter-spacing:.1em">Infra &amp; Cyber</p>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="tag-slate">Kali Linux</span><span class="tag-slate">Wireshark</span><span class="tag-slate">Nmap</span><span class="tag-slate">TCP/IP</span>
-            </div>
-          </div>
-          <div class="pt-3" style="border-top:1px solid #f1f5f9">
-            <p class="text-uppercase fw-black mb-3" style="font-size:.7rem;color:#94a3b8;letter-spacing:.1em">Soft Skills &amp; Outils</p>
-            <ul class="list-unstyled mb-0" style="font-size:.9rem">
-              <li class="d-flex align-items-center gap-2 mb-2 text-secondary fw-500">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Git / Azure DevOps
-              </li>
-              <li class="d-flex align-items-center gap-2 mb-2 text-secondary fw-500">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Polyvalence &amp; Autonomie
-              </li>
-              <li class="d-flex align-items-center gap-2 text-secondary fw-500">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Anglais (Pro)
-              </li>
-            </ul>
-          </div>
+  <!-- ── CERTIFICATIONS ── -->
+  <section id="certifications" class="bh-inner border-top">
+    <h2 class="section-title">
+      <div class="section-title-icon" style="background: linear-gradient(135deg, #9333ea, #6b21a8);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+      Certifications
+    </h2>
+    <div class="row g-4 mt-4">
+      <!-- SecNum -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100" style="padding: 1.5rem;">
+          <h3 class="fw-black fs-5 mb-1 text-dark">SecNumAcadémie</h3>
+          <p class="text-secondary fw-bold" style="font-size: 0.8rem;">ANSSI (Cybersécurité)</p>
+          <button class="btn-outline-custom mt-3 w-100 justify-content-center" onclick="openModal('secnum')">Voir Certificat</button>
+        </div>
+      </div>
+      <!-- POO Python -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100" style="padding: 1.5rem;">
+          <h3 class="fw-black fs-5 mb-1 text-dark">Programmation Orientée Objet</h3>
+          <p class="text-secondary fw-bold" style="font-size: 0.8rem;">OpenClassrooms (Python)</p>
+          <button class="btn-outline-custom mt-3 w-100 justify-content-center" onclick="openModal('poo')">Voir Certificat</button>
+        </div>
+      </div>
+      <!-- DataViz -->
+      <div class="col-lg-4 d-flex">
+        <div class="proj-card w-100" style="padding: 1.5rem;">
+          <h3 class="fw-black fs-5 mb-1 text-dark">NumPy, Pandas & DataViz</h3>
+          <p class="text-secondary fw-bold" style="font-size: 0.8rem;">OpenClassrooms (Python)</p>
+          <button class="btn-outline-custom mt-3 w-100 justify-content-center" onclick="openModal('dataviz')">Voir Certificat</button>
         </div>
       </div>
     </div>
@@ -265,36 +364,304 @@
 <!-- ── FOOTER ── -->
 <footer class="bh-footer mt-5">
   <div class="bh-inner py-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4">
-    <p class="mb-0 fw-bold text-uppercase small" style="color:#94a3b8;letter-spacing:.1em">Brahim Hammou · 2026 · BTS SIO SLAM</p>
-    <div class="d-flex flex-column flex-sm-row align-items-center gap-3" style="color:#94a3b8;font-size:.85rem">
-      <a href="mailto:b.hammou@outlook.com">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        b.hammou@outlook.com
-      </a>
+    <p class="mb-0 fw-bold text-uppercase small" style="color:#94a3b8;letter-spacing:.1em">Brahim Hammou · 2026</p>
+    <div class="d-flex flex-column flex-sm-row align-items-center gap-3" style="font-size:.85rem">
+      <a href="mailto:b.hammou@outlook.com"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>b.hammou@outlook.com</a>
       <span class="sep d-none d-sm-block">·</span>
-      <span class="d-flex align-items-center gap-2 fw-500">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.39 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        07 25 45 79 99
-      </span>
+      <span class="d-flex align-items-center gap-2 fw-bold text-light"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.39 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>07 82 54 57 99</span>
       <span class="sep d-none d-sm-block">·</span>
-      <span class="d-flex align-items-center gap-2 fw-500">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        Savigny-le-Temple, France
-      </span>
+      <span class="d-flex align-items-center gap-2 text-light"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Savigny-le-Temple, France</span>
     </div>
   </div>
 </footer>
 
+<!-- ══════════ MODALES ══════════ -->
+
+<!-- Stage ZAM -->
+<div class="modal fade" id="modal-zam" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#6366F1,#4338ca)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">Stage 2ème Année</span><h3 class="fw-black mb-0">Groupe Jacky Perrenot (ZAMINFORMATIQUE)</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-4">
+          <div class="col-md-12">
+            <p class="ctx-box mb-4">Développement et maintenance évolutive de l'ERP interne NOA en environnement Agile au sein d'une équipe de 8 développeurs.</p>
+          </div>
+          <div class="col-md-4">
+            <div class="content-item h-100 flex-column align-items-start">
+              <h6 class="fw-bold text-dark">Module d'historique (Sécurité)</h6>
+              <p class="mb-0 mt-2" style="font-size:0.85rem">Création d'un module C# permettant d'enregistrer et de visualiser tous les événements critiques (changements de droits, comptes). Ajout de déclencheurs SQL.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="content-item h-100 flex-column align-items-start">
+              <h6 class="fw-bold text-dark">Résolution Bug Critique</h6>
+              <p class="mb-0 mt-2" style="font-size:0.85rem">Correction d'un bug d'arrondi monétaire sur le prix au poids en base de données, impactant directement la facturation client.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="content-item h-100 flex-column align-items-start">
+              <h6 class="fw-bold text-dark">Évolution Base de Données</h6>
+              <p class="mb-0 mt-2" style="font-size:0.85rem">Migration SQL (ALTER TABLE) et mise à jour des requêtes via Query Builder pour l'ajout d'options sur les grilles tarifaires.</p>
+            </div>
+          </div>
+        </div>
+        
+        <h5 class="fw-black mt-5 mb-3">Architecture Logicielle (C# / SQL)</h5>
+        <div class="d-flex flex-column gap-3">
+          <div class="ctx-box p-3 d-flex flex-wrap align-items-center gap-2 justify-content-center text-center fw-bold" style="font-size: 0.85rem;">
+            <span class="tech-tag" style="background:#4F46E5; color:white; border-color:#4F46E5;">Interface ERP (NOA)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag">Déclencheur d'Événement (C#)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag">Requête SQL Paramétrée</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag" style="background:#10b981; color:white; border-color:#10b981;">Enregistrement Sécurisé BDD (Logs)</span>
+          </div>
+        </div>
+
+        <h5 class="fw-black mt-4 mb-3">Cycle de vie Azure DevOps</h5>
+        <div class="d-flex flex-column gap-3">
+          <div class="ctx-box p-3 d-flex flex-wrap align-items-center gap-2 justify-content-center text-center fw-bold" style="font-size: 0.85rem;">
+            <span class="tech-tag" style="background:#0ea5e9; color:white; border-color:#0ea5e9;">Ticket de besoin</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag">Développement Git (Branche locale)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag">Code Review & Pull Request (PR)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag" style="background:#8b5cf6; color:white; border-color:#8b5cf6;">Merge & Validation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stage VIR -->
+<div class="modal fade" id="modal-vir" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#a855f7,#7e22ce)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">Stage 1ère Année</span><h3 class="fw-black mb-0">VIR by JP / JP Home Formation</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-4">
+          <div class="col-md-12">
+            <p class="ctx-box mb-4">Découverte des SI logistique du dernier kilomètre. Refonte d'outils (Akanea, Urbantz) et création de scripts Python pour l'extraction et le traitement massif de données.</p>
+          </div>
+          <div class="col-md-4">
+            <div class="content-item h-100 flex-column align-items-start">
+              <h6 class="fw-bold text-dark">Migration (Java vers Python)</h6>
+              <p class="mb-0 mt-2" style="font-size:0.85rem">Analyse du programme existant <code>TmsMroadGenerateur.exe</code> et réadaptation des logiques de routage en scripts Python maintenables.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="content-item h-100 flex-column align-items-start">
+              <h6 class="fw-bold text-dark">Outil d'Extraction CLI</h6>
+              <p class="mb-0 mt-2" style="font-size:0.85rem">Script Python en ligne de commande pour requêter la BDD selon des paramètres dynamiques spécifiques aux événements de livraisons.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="content-item h-100 flex-column align-items-start">
+              <h6 class="fw-bold text-dark">Automatisation Excel</h6>
+              <p class="mb-0 mt-2" style="font-size:0.85rem">Extraction et génération automatisée de fichiers de facturation (Taxation) structurés pour la direction.</p>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="fw-black mt-5 mb-3">Logique d'Automatisation de l'Outil (Python)</h5>
+        <div class="d-flex flex-column gap-3">
+          <div class="ctx-box p-3 d-flex flex-wrap align-items-center gap-2 justify-content-center text-center fw-bold" style="font-size: 0.85rem;">
+            <span class="tech-tag" style="background:#1e293b; color:white; border-color:#1e293b;">Paramètres CLI (Terminal)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag">Connexion BDD Logistique</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag">Extraction & Nettoyage (Python/Pandas)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="tech-tag" style="background:#10b981; color:white; border-color:#10b981;">Génération Fichier Excel Structuré</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Infra -->
+<div class="modal fade" id="modal-infra" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#10b981,#047857)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">Projet Infra / Réseau</span><h3 class="fw-black mb-0">Sécurisation d'Infrastructure</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-4">
+          <div class="col-md-12">
+            <h5 class="fw-black mb-2">Contexte du projet</h5>
+            <p class="ctx-box">Conception et mise en place d'une architecture réseau sécurisée isolée via des machines virtuelles pour effectuer des tests de pénétration.</p>
+            <h5 class="fw-black mt-4 mb-3">Missions techniques</h5>
+            <div class="d-flex flex-column gap-2">
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Déploiement d'un labo virtuel (VirtualBox) avec séparation DMZ / LAN interne.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Simulation d'attaques réseau avec Kali Linux.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Scan de vulnérabilités via Nmap et analyse de trames avec Wireshark.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sicily Lines -->
+<div class="modal fade" id="modal-sicilies" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#6366F1,#4338ca)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">Projet d'École</span><h3 class="fw-black mb-0">Sicily Lines</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-4">
+          <div class="col-md-7">
+            <h5 class="fw-black mb-2">Contexte du projet</h5>
+            <p class="ctx-box">SI d'une compagnie maritime fictive avec architecture Client Lourd / Client Léger.</p>
+            <h5 class="fw-black mt-4 mb-3">Missions techniques</h5>
+            <div class="d-flex flex-column gap-2">
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Création de l'application WinForms (C#) pour la gestion de la flotte.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Développement du portail de réservation client en PHP.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Sécurité : hachage Bcrypt, requêtes préparées (PDO) et protection CSRF.</div>
+            </div>
+          </div>
+          <div class="col-md-5">
+             <h5 class="fw-black mb-3">Aperçu</h5>
+             <div class="shot-wrap" onclick="openLightbox('image/sicilyLinesSite.png')">
+                <img src="image/sicilyLinesSite.png" onerror="this.src='https://placehold.co/800x450/252538/94a3b8?text=Sicily+Lines+Site'" alt="Site Web PHP"/>
+                <div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="shot-caption">Site Web PHP — Sicily Lines</div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Netflix -->
+<div class="modal fade" id="modal-netflix" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#a855f7,#7e22ce)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">Projet Personnel</span><h3 class="fw-black mb-0">Netflix Data Analysis</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row g-4">
+          <div class="col-md-7">
+            <h5 class="fw-black mb-2">Contexte du projet</h5>
+            <p class="ctx-box">Projet d'ingénierie des données Python visant à identifier des tendances de contenu via un dataset Netflix massif.</p>
+            <h5 class="fw-black mt-4 mb-3">Missions techniques</h5>
+            <div class="d-flex flex-column gap-2">
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Mise en place de l'environnement JupyterLab.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Data Cleaning avec Pandas : gestion des NaN et formatage des types.</div>
+              <div class="content-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>Dataviz via Matplotlib : analyse de corrélation et répartition des genres.</div>
+            </div>
+          </div>
+          <div class="col-md-5">
+             <h5 class="fw-black mb-3">Aperçu</h5>
+             <div class="shot-wrap" onclick="openLightbox('image/netflix1.png')">
+                <img src="image/netflix1.png" onerror="this.src='https://placehold.co/800x450/252538/94a3b8?text=Data+Cleaning'" alt="Data Cleaning"/>
+                <div class="shot-overlay"><div class="shot-zoom"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+                <div class="shot-caption">Code Jupyter — Data Cleaning</div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SecNum -->
+<div class="modal fade" id="modal-secnum" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#6366F1,#9333ea)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">ANSSI</span><h3 class="fw-black mb-0">SecNumAcadémie</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <h5 class="fw-black mb-2">Description de la certification</h5>
+        <p class="ctx-box">Ce MOOC de l'ANSSI valide l'acquisition des bonnes pratiques essentielles en matière de sécurité informatique.</p>
+        <div class="shot-wrap mt-4" onclick="openLightbox('image/certif_anssi.png')">
+          <img src="image/certif_anssi.png" onerror="this.src='https://placehold.co/800x1130/252538/94a3b8?text=Certificat+SecNumAcademie'" alt="Certificat" style="aspect-ratio:auto"/>
+          <div class="shot-caption">Certificat SecNumAcadémie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POO Python -->
+<div class="modal fade" id="modal-poo" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#10b981,#0d9488)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">OpenClassrooms</span><h3 class="fw-black mb-0">POO Python</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <h5 class="fw-black mb-2">Description de la certification</h5>
+        <p class="ctx-box">Certification OpenClassrooms validant la maîtrise de la POO en Python : classes, héritage, surcharge de méthodes et gestion des exceptions.</p>
+        <div class="shot-wrap mt-4" onclick="openLightbox('image/certifpythonobjet.png')">
+          <img src="image/certifpythonobjet.png" onerror="this.src='https://placehold.co/800x1130/252538/94a3b8?text=Attestation+POO+Python'" alt="Attestation" style="aspect-ratio:auto"/>
+          <div class="shot-caption">Attestation OpenClassrooms — POO Python</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DataViz -->
+<div class="modal fade" id="modal-dataviz" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-grad-header" style="background:linear-gradient(135deg,#a855f7,#6366F1)">
+        <div><span class="d-block mb-1 fw-bold small" style="color:rgba(255,255,255,.75)">OpenClassrooms</span><h3 class="fw-black mb-0">NumPy, Pandas & DataViz</h3></div>
+        <button class="modal-close-btn" data-bs-dismiss="modal">&#x2715;</button>
+      </div>
+      <div class="modal-body p-4">
+        <h5 class="fw-black mb-2">Description de la certification</h5>
+        <p class="ctx-box">Certification OpenClassrooms validant la maîtrise complète de la chaîne de traitement de la donnée avec Python dans JupyterLab.</p>
+        <div class="shot-wrap mt-4" onclick="openLightbox('image/certifpythondata.png')">
+          <img src="image/certifpythondata.png" onerror="this.src='https://placehold.co/800x1130/252538/94a3b8?text=Attestation+DataViz'" alt="Attestation" style="aspect-ratio:auto"/>
+          <div class="shot-caption">Attestation OpenClassrooms — DataViz</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  function openLightbox(src) {
+  // Fonctions pour la Lightbox
+  function openLightbox(src){
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox').classList.add('open');
   }
-  function closeLightbox() {
+  function closeLightbox(){
     document.getElementById('lightbox').classList.remove('open');
     document.getElementById('lightbox-img').src = '';
   }
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLightbox(); });
 
-  // Image fal
+  // Fonction pour les Modales Bootstrap
+  function openModal(id){
+    var el = document.getElementById('modal-' + id);
+    if(el){ new bootstrap.Modal(el).show(); }
+  }
+</script>
+</body>
+</html>
